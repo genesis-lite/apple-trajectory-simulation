@@ -23,8 +23,8 @@ def force(x, y, z, t):
     Calculate the force on the apple at position (x, y, z) and time t due to the hologram pattern.
     """
     I = np.abs(hologram_pattern(x, y, z, t))**2 # I is the intensity of the hologram pattern which is the square of the absolute value of H
-    Fx = force_scale * 0.01 * I * np.sin(x)
-    Fy = force_scale * 0.01 * I * np.sin(y)
+    Fx = force_scale * 0.01 * I * np.sin(x) # Calculates the force in the x-direction
+    Fy = force_scale * 0.01 * I * np.sin(y) # Calculates the force in the y-direction
     Fz = force_scale * 0.01 * I * np.sin(z)
     
     # Used for debugging - prints the calculated forces
@@ -50,22 +50,26 @@ def simulate_motion():
     forces = []
 
     while t < t_max:
-        Fx, Fy, Fz = force(x, y, z, t)
-        ax, ay, az = Fx / apple_mass, Fy / apple_mass, Fz / apple_mass
+        Fx, Fy, Fz = force(x, y, z, t) #: Calculates forces
+        ax, ay, az = Fx / apple_mass, Fy / apple_mass, Fz / apple_mass # Calculate accelerations
 
-        # Debugging: Print accelerations
+        # Debugging: Prints accelerations
         print(f"Step {step}: ax={ax}, ay={ay}, az={az}")
 
+        # Update velocities 
         vx += ax * dt
         vy += ay * dt
         vz += az * dt
 
+        # Update positions
         x += vx * dt
         y += vy * dt
         z += vz * dt
 
         positions.append((x, y, z))
         forces.append((Fx, Fy, Fz))
+
+        # Debugging - Every 1000 steps, print detailed information about the state
 
         if step % 1000 == 0:
             H = hologram_pattern(x, y, z, t)
