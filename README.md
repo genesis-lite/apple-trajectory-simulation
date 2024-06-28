@@ -13,6 +13,17 @@ Studies have explored the potential of using light to manipulate microscopic ent
 
 The energy and intensity demands for manipulating larger masses pose significant challenges, necessitating further technological advancements to become feasible. Nevertheless, this study concludes that future advancements in large-scale optical tweezers for macroscopic manipulation are promising due to foundational work in manipulating microscopic entities with light.
 
+##Project Structure
+
+apple-trajectory-simulation/
+│
+├── README.md          
+├── requirements.txt   
+├── simulation.py      
+└── plots/            
+├── Plot_1.PNG 
+
+
 
 ## Installation
 
@@ -27,5 +38,4 @@ The energy and intensity demands for manipulating larger masses pose significant
 1. Clone the repository:
    ```bash
    git clone https://github.com/genesis-lite/apple-trajectory-simulation.git
-   cd apple-trajectory-simulation
 
